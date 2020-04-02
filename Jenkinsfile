@@ -11,6 +11,7 @@ pipeline {
 
   stages {
     stage('Publish') {
+      when { triggeredBy 'UpstreamCause' }
       steps {
         script {
             def causes = currentBuild.getBuildCauses()
@@ -20,7 +21,7 @@ pipeline {
                     def buildNumber = it.upstreamBuild;
                     echo "Triggered by ${projectName}:${buildNumber}"
    
-                    copyArtifacts(filter: '**/*.deb', projectName: projectName, selector: specific(buildNumber))
+                    copyArtifacts(filter: '**/*.deb', projectName: projectName, selector: specific(buildNumber.toString()))
 
                 } else {
                     echo "Not triggered by upstream build. We can ignore"
