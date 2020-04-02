@@ -15,8 +15,10 @@ pipeline {
         script {
             def causes = currentBuild.getBuildCauses()
             causes.each {
-                if (it._class == "hudson.model.Cause$UpstreamCause") {
+                if (it._class == 'hudson.model.Cause$UpstreamCause') {
                     echo "Triggered by upstream build!"
+                } else {
+                    echo "Not triggered by upstream build. We can ignore"
                 }
             }
         }
