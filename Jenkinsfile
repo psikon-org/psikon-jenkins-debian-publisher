@@ -15,14 +15,12 @@ pipeline {
         script {
             def causes = currentBuild.getBuildCauses()
             causes.each {
-                println it
+                if (it._class == "hudson.model.Cause$UpstreamCause") {
+                    echo "Triggered by upstream build!"
+                }
+            }
             }
         }
-/*
-        def parameters = Jenkins.instance.getAllItems(Job)
-                        .find {job -> job.fullName == jobName }
-                        .getBuildByNumber(buildId.toInteger())
-*/
         echo "${currentBuild.buildCauses}"
       }
     }
