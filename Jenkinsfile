@@ -6,7 +6,7 @@ pipeline {
   }
 
   libraries {
-    lib('pipeline-jenkins-aptly@master')
+    lib('psikon-jenkins-aptly@master')
   }
 
   stages {
