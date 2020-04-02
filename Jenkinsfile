@@ -19,7 +19,6 @@ pipeline {
                     echo "Triggered by upstream build!"
                 }
             }
-            }
         }
         echo "${currentBuild.buildCauses}"
       }
