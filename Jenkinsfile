@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Publish') {
       steps {
-        publishDeb
+        echo "${currentBuild.buildCauses}"
       }
     }
   }
