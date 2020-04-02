@@ -20,7 +20,13 @@ pipeline {
                     def buildNumber = it.upstreamBuild;
                     echo "Triggered by ${projectName}:${buildNumber}"
    
-                    copyArtifacts(filter: '**/*.deb', projectName: projectName, selector: specific(buildNumber.toString()))
+                    copyArtifacts(
+                        filter: '**/*.deb', 
+                        projectName: projectName, 
+                        selector: specific(buildNumber),
+                        flatten: true,
+                        target: 'target/artifacts'
+                    )
 
                 } else {
                     echo "Not triggered by upstream build. We can ignore"
