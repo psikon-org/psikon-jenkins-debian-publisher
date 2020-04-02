@@ -12,6 +12,17 @@ pipeline {
   stages {
     stage('Publish') {
       steps {
+        script {
+            def causes = currentBuild.getBuildCauses()
+            causes.each {
+                println it
+            }
+        }
+/*
+        def parameters = Jenkins.instance.getAllItems(Job)
+                        .find {job -> job.fullName == jobName }
+                        .getBuildByNumber(buildId.toInteger())
+*/
         echo "${currentBuild.buildCauses}"
       }
     }
