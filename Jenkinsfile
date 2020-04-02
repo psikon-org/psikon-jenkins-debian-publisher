@@ -11,7 +11,6 @@ pipeline {
 
   stages {
     stage('Publish') {
-      when { triggeredBy 'UpstreamCause' }
       steps {
         script {
             def causes = currentBuild.getBuildCauses()
