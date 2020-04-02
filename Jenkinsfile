@@ -23,7 +23,7 @@ pipeline {
                     copyArtifacts(
                         filter: '**/*.deb', 
                         projectName: projectName, 
-                        selector: specific(buildNumber),
+                        selector: specific(buildNumber.toString()),
                         flatten: true,
                         target: 'target/artifacts'
                     )
