@@ -16,7 +16,11 @@ pipeline {
             def causes = currentBuild.getBuildCauses()
             causes.each {
                 if (it._class == 'hudson.model.Cause$UpstreamCause') {
-                    echo "Triggered by upstream build!"
+                    def projectName = it.upstreamProject;
+                    def buildNumber = it.upstreamBuild;
+                    echo "Triggered by ${projectName}:${buildNumber}"
+
+                    def params = Jenkins.instance.getAllItems(Job);
                 } else {
                     echo "Not triggered by upstream build. We can ignore"
                 }
