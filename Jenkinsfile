@@ -32,6 +32,11 @@ pipeline {
                         target: 'target/artifacts'
                     )
 
+                    sh """
+                       pwd
+                       ls -al target/artifacts
+                      """
+
                 } else {
                     echo "Not triggered by upstream build. We can ignore"
                 }
