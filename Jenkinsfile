@@ -11,6 +11,7 @@ pipeline {
 
   libraries {
     lib('psikon-jenkins-aptly@master')
+    lib('psikon-jenkins-mailer@master')
   }
 
   stages {
@@ -40,6 +41,8 @@ pipeline {
                     }
 
                 } else {
+                    copyArtifacts(
+                        filter: '**/*.deb',
                     echo "Not triggered by upstream build. We can ignore"
                 }
             }
@@ -48,5 +51,13 @@ pipeline {
       }
     }
   }
+  post {
+    success {
+      psikonMailer(currentBuild, env)
+    }
 
+    failure {
+      psikonMailer(currentBuild, env)
+    }
+  }
 }
