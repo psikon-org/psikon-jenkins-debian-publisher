@@ -5,6 +5,10 @@ pipeline {
     }
   }
 
+  triggers {
+    upstream(upstreamProjects: 'Test job', threshold: hudson.model.Result.SUCCESS)
+  }
+
   libraries {
     lib('psikon-jenkins-aptly@master')
   }
