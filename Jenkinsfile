@@ -6,7 +6,7 @@ pipeline {
   }
 
   triggers {
-    upstream(upstreamProjects: 'Test job/master', threshold: hudson.model.Result.SUCCESS)
+    upstream(upstreamProjects: 'psistats/psistats-rs/master', threshold: hudson.model.Result.SUCCESS)
   }
 
   libraries {
