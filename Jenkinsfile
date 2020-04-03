@@ -32,10 +32,11 @@ pipeline {
                         target: 'target/artifacts'
                     )
 
-                    sh """
-                       pwd
-                       ls -al target/artifacts
-                      """
+                    def debs = findFiles glob: 'target/artifact/*.deb'
+
+                    debs.each { deb ->
+                        echo "Deb!!!: $deb"
+                    }
 
                 } else {
                     echo "Not triggered by upstream build. We can ignore"
