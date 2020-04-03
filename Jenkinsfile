@@ -35,7 +35,8 @@ pipeline {
                     def debs = findFiles glob: 'target/artifacts/*.deb'
 
                     debs.each { deb ->
-                        echo "Deb!!!: $deb"
+                        echo "Publishing debian file: $deb"
+                        publishDeb component: 'testing', distribution: 'psikon', debFile: deb, repoName: 'psikon-testing'
                     }
 
                 } else {
