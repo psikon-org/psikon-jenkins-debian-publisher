@@ -41,8 +41,6 @@ pipeline {
                     }
 
                 } else {
-                    copyArtifacts(
-                        filter: '**/*.deb',
                     echo "Not triggered by upstream build. We can ignore"
                 }
             }
