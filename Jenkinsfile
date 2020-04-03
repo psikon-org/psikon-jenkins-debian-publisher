@@ -32,7 +32,7 @@ pipeline {
                         target: 'target/artifacts'
                     )
 
-                    def debs = findFiles glob: 'target/artifact/*.deb'
+                    def debs = findFiles glob: 'target/artifacts/*.deb'
 
                     debs.each { deb ->
                         echo "Deb!!!: $deb"
