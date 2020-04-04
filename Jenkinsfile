@@ -6,7 +6,7 @@ pipeline {
   }
 
   triggers {
-    upstream(upstreamProjects: 'psistats/psistats-rs/master', threshold: hudson.model.Result.SUCCESS)
+    upstream(upstreamProjects: 'psikon-org/psistats/master', threshold: hudson.model.Result.SUCCESS)
   }
 
   libraries {
